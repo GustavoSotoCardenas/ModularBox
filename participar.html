@@ -96,6 +96,16 @@
           <p class="form-note" id="payStatus" role="status" hidden></p>
         </form>
 
+        <!-- ===== PAGO CONFIRMADO: folios del sorteo ===== -->
+        <div class="participa-resultado" id="pagoResultado" hidden>
+          <span class="promo-flag">¡PAGO CONFIRMADO!</span>
+          <h2>Ya estás participando</h2>
+          <p>Tus folios para el Gran Sorteo:</p>
+          <ul class="resultado-folios" id="resultadoFolios"></ul>
+          <p class="resultado-nota">Guarda tus folios: son tu comprobante. Solo cuentan los pagos confirmados.</p>
+          <a class="btn btn-primary" id="resultadoWa" href="#" target="_blank" rel="noopener">Enviar aviso por WhatsApp</a>
+        </div>
+
         <p class="participa-volver"><a href="index.html">← Volver al inicio</a></p>
       </div>
     </section>
@@ -111,7 +121,6 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/participar.js"></script>
 </body>
 </html>
