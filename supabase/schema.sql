@@ -35,6 +35,7 @@ create table if not exists public.ordenes (
 -- Tabla de compras confirmadas (un folio por fila, insertada tras el pago)
 create table if not exists public.compras (
   id uuid primary key default gen_random_uuid(),
+  numero bigserial,
   orden text,
   folio text not null unique,
   nombre text not null,
@@ -47,6 +48,10 @@ create table if not exists public.compras (
 
 -- Para tablas ya creadas con el esquema anterior: agrega la columna "orden".
 alter table public.compras add column if not exists orden text;
+
+-- Número correlativo por ticket vendido (se autoincrementa: 1, 2, 3...).
+-- Los tickets ya existentes se numeran automáticamente al agregarla.
+alter table public.compras add column if not exists numero bigserial;
 
 -- Índice para buscar rápido por folio (comprobante del sorteo)
 create index if not exists compras_folio_idx on public.compras (folio);

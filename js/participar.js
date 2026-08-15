@@ -90,10 +90,15 @@
     if (form) { form.hidden = true; }
     if (resultadoFolios) {
       resultadoFolios.innerHTML = "";
-      var folios = orden.folios || [];
-      for (var i = 0; i < folios.length; i++) {
+      var items = [];
+      if (orden.numeros && orden.numeros.length) {
+        items = orden.numeros.map(function (t) { return "N° " + t.numero + " · " + t.folio; });
+      } else {
+        items = (orden.folios || []).slice();
+      }
+      for (var i = 0; i < items.length; i++) {
         var li = document.createElement("li");
-        li.textContent = folios[i];
+        li.textContent = items[i];
         resultadoFolios.appendChild(li);
       }
     }

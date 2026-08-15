@@ -31,9 +31,20 @@ export default async function handler(req, res) {
 
   if (!row) return res.json({ estado: "no-existe", folios: [] });
 
+  /* Número correlativo de cada ticket confirmado de esta orden. */
+  var numeros = [];
+  if (row.estado === "pagado") {
+    var qc = await fetch(process.env.SUPABASE_URL + "/rest/v1/compras?select=numero,folio&orden=eq." + encodeURIComponent(orden) + "&order=numero.asc", {
+      headers: sbHeaders()
+    });
+    var compras = await qc.json().catch(function () { return []; });
+    numeros = Array.isArray(compras) ? compras : [];
+  }
+
   res.json({
     estado: row.estado,
     folios: row.folios || [],
+    numeros: numeros,
     nombre: row.nombre,
     correo: row.correo,
     telefono: row.telefono,
