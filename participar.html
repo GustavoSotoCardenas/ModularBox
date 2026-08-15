@@ -103,7 +103,10 @@
           <p>Tus folios para el Gran Sorteo:</p>
           <ul class="resultado-folios" id="resultadoFolios"></ul>
           <p class="resultado-nota">Guarda tus folios: son tu comprobante. Solo cuentan los pagos confirmados.</p>
-          <a class="btn btn-primary" id="resultadoWa" href="#" target="_blank" rel="noopener">Enviar aviso por WhatsApp</a>
+          <div class="resultado-acciones">
+            <a class="btn btn-primary" id="resultadoWa" href="#" target="_blank" rel="noopener">Enviar aviso por WhatsApp</a>
+            <button type="button" class="btn btn-outline" id="resultadoBoleta">Ver mi boleta</button>
+          </div>
         </div>
 
         <p class="participa-volver"><a href="index.html">← Volver al inicio</a></p>
@@ -111,6 +114,34 @@
     </section>
 
   </main>
+
+  <!-- ===== BOLETA DE PARTICIPACIÓN (pago confirmado) ===== -->
+  <div class="boleta-overlay" id="boletaOverlay" hidden>
+    <div class="boleta">
+      <div class="boleta-head">
+        <span class="boleta-logo">Modular<strong>Box</strong></span>
+        <span class="boleta-tipo">Boleta de participación</span>
+      </div>
+      <p class="boleta-sorteo">Gran Sorteo · Casa modular + moto 0 km + $100.000</p>
+      <div class="boleta-folios" id="bFolios"></div>
+      <table class="boleta-tabla">
+        <tbody>
+          <tr><th>N° de orden</th><td id="bOrden"></td></tr>
+          <tr><th>Fecha</th><td id="bFecha"></td></tr>
+          <tr><th>Comprador</th><td id="bNombre"></td></tr>
+          <tr><th>Correo</th><td id="bCorreo"></td></tr>
+          <tr><th>Teléfono</th><td id="bTelefono"></td></tr>
+          <tr><th>Detalle</th><td id="bDetalle"></td></tr>
+          <tr><th>Total</th><td id="bTotal" class="b-total"></td></tr>
+        </tbody>
+      </table>
+      <p class="boleta-nota">Guarda esta boleta. Los folios son tu comprobante para participar en el sorteo. Solo cuentan los pagos confirmados.</p>
+    </div>
+    <div class="boleta-actions">
+      <button type="button" class="btn btn-primary" id="printBoleta">Imprimir / guardar PDF</button>
+      <button type="button" class="btn btn-outline" id="closeBoleta">Cerrar</button>
+    </div>
+  </div>
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">

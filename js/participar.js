@@ -14,6 +14,8 @@
   var resultadoBox = document.getElementById("pagoResultado");
   var resultadoFolios = document.getElementById("resultadoFolios");
   var resultadoWa = document.getElementById("resultadoWa");
+  var resultadoBoleta = document.getElementById("resultadoBoleta");
+  var boletaOverlay = document.getElementById("boletaOverlay");
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var NAME_RE = /^[\p{L}\s.'-]{2,60}$/u;
@@ -72,6 +74,18 @@
     return "$" + Number(n).toLocaleString("es-CL");
   }
 
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el) { el.textContent = value == null ? "" : String(value); }
+  }
+
+  function fmtFecha(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return "";
+    return d.toLocaleString("es-CL", { dateStyle: "long", timeStyle: "short" });
+  }
+
   function getParam(name) {
     return new URLSearchParams(window.location.search).get(name);
   }
@@ -86,23 +100,47 @@
     return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waMsg);
   }
 
-  function mostrarConfirmado(orden) {
+  function mostrarConfirmado(orden, ordenId) {
     if (form) { form.hidden = true; }
+
+    var items = [];
+    if (orden.numeros && orden.numeros.length) {
+      items = orden.numeros.map(function (t) { return "N° " + t.numero + " · " + t.folio; });
+    } else {
+      items = (orden.folios || []).slice();
+    }
+
     if (resultadoFolios) {
       resultadoFolios.innerHTML = "";
-      var items = [];
-      if (orden.numeros && orden.numeros.length) {
-        items = orden.numeros.map(function (t) { return "N° " + t.numero + " · " + t.folio; });
-      } else {
-        items = (orden.folios || []).slice();
-      }
       for (var i = 0; i < items.length; i++) {
         var li = document.createElement("li");
         li.textContent = items[i];
         resultadoFolios.appendChild(li);
       }
     }
+
     if (resultadoWa) { resultadoWa.href = waUrl(orden); }
+    if (resultadoBoleta) { resultadoBoleta.dataset.orden = ordenId || ""; }
+
+    /* Llenar la boleta */
+    var bFolios = document.getElementById("bFolios");
+    if (bFolios) {
+      bFolios.innerHTML = "";
+      for (var j = 0; j < items.length; j++) {
+        var div = document.createElement("div");
+        div.className = "boleta-folio";
+        div.textContent = items[j];
+        bFolios.appendChild(div);
+      }
+    }
+    setText("bOrden", ordenId);
+    setText("bFecha", fmtFecha(orden.fechaPago || orden.fecha));
+    setText("bNombre", orden.nombre);
+    setText("bCorreo", orden.correo);
+    setText("bTelefono", orden.telefono);
+    setText("bDetalle", orden.tickets);
+    setText("bTotal", moneyCLP(orden.total));
+
     if (resultadoBox) {
       resultadoBox.hidden = false;
       resultadoBox.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -121,7 +159,7 @@
         .then(function (data) {
           if (data.estado === "pagado") {
             clearInterval(timer);
-            mostrarConfirmado(data);
+            mostrarConfirmado(data, orden);
           } else if (data.estado === "rechazado") {
             clearInterval(timer);
             showMsg("Tu pago fue rechazado. Intenta de nuevo con otro medio de pago.", "error");
@@ -179,6 +217,20 @@
         iniciarPago(this.getAttribute("data-ticket"));
       });
     }
+  }
+
+  if (resultadoBoleta && boletaOverlay) {
+    resultadoBoleta.addEventListener("click", function () {
+      boletaOverlay.hidden = false;
+    });
+  }
+  var printBoleta = document.getElementById("printBoleta");
+  if (printBoleta) {
+    printBoleta.addEventListener("click", function () { window.print(); });
+  }
+  var closeBoleta = document.getElementById("closeBoleta");
+  if (closeBoleta && boletaOverlay) {
+    closeBoleta.addEventListener("click", function () { boletaOverlay.hidden = true; });
   }
 
   /* Si venimos de MercadoPago (pago aprobado/pendiente), esperamos la confirmación. */

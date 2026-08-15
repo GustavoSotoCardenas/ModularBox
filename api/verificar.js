@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   var orden = String(req.query.orden || "").trim();
   if (!orden) return res.status(400).json({ error: "Falta la orden." });
 
-  var q = await fetch(process.env.SUPABASE_URL + "/rest/v1/ordenes?select=estado,folios,nombre,correo,telefono,tickets,total&orden=eq." + encodeURIComponent(orden), {
+  var q = await fetch(process.env.SUPABASE_URL + "/rest/v1/ordenes?select=estado,folios,fecha,nombre,correo,telefono,tickets,total&orden=eq." + encodeURIComponent(orden), {
     headers: sbHeaders()
   });
   var rows = await q.json().catch(function () { return []; });
@@ -33,12 +33,15 @@ export default async function handler(req, res) {
 
   /* Número correlativo de cada ticket confirmado de esta orden. */
   var numeros = [];
+  var fechaPago = null;
   if (row.estado === "pagado") {
-    var qc = await fetch(process.env.SUPABASE_URL + "/rest/v1/compras?select=numero,folio&orden=eq." + encodeURIComponent(orden) + "&order=numero.asc", {
+    var qc = await fetch(process.env.SUPABASE_URL + "/rest/v1/compras?select=numero,folio,fecha&orden=eq." + encodeURIComponent(orden) + "&order=numero.asc", {
       headers: sbHeaders()
     });
     var compras = await qc.json().catch(function () { return []; });
-    numeros = Array.isArray(compras) ? compras : [];
+    compras = Array.isArray(compras) ? compras : [];
+    numeros = compras.map(function (c) { return { numero: c.numero, folio: c.folio }; });
+    if (compras[0] && compras[0].fecha) fechaPago = compras[0].fecha;
   }
 
   res.json({
@@ -49,6 +52,8 @@ export default async function handler(req, res) {
     correo: row.correo,
     telefono: row.telefono,
     tickets: row.tickets,
-    total: row.total
+    total: row.total,
+    fecha: row.fecha,
+    fechaPago: fechaPago
   });
 }

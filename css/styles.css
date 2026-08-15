@@ -1039,6 +1039,10 @@ body.modal-open { overflow: hidden; }
   padding: 12px 18px;
 }
 .resultado-nota { font-size: .85rem; margin-bottom: 22px; }
+.resultado-acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.boleta-folios { display: grid; gap: 8px; margin-bottom: 14px; }
+.boleta-folios .boleta-folio { margin-bottom: 0; }
 
 .participa-volver { text-align: center; margin-top: 28px; }
 .participa-volver a { color: var(--beige); font-weight: 500; transition: opacity .15s ease; }
