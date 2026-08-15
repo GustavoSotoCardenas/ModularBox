@@ -136,7 +136,11 @@ export default async function handler(req, res) {
   var prefData = await pref.json().catch(function () { return {}; });
 
   if (!pref.ok || !prefData.init_point) {
-    return res.status(502).json({ error: "MercadoPago no pudo crear el pago. Intenta de nuevo." });
+    console.error("[checkout] MercadoPago error:", pref.status, JSON.stringify(prefData));
+    var detalle = prefData && prefData.message
+      ? prefData.message
+      : (prefData && prefData.error ? prefData.error : "desconocido");
+    return res.status(502).json({ error: "MercadoPago no pudo crear el pago.", detalle: detalle });
   }
 
   res.json({ init_point: prefData.init_point, orden: orden });
