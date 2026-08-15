@@ -9,8 +9,8 @@
      3. Abre "SQL Editor", pega el contenido de supabase/schema.sql
         y ejecútalo (crea la tabla "compras" con su seguridad).
      Sin esto, el sitio sigue funcionando, pero NO se guardan las compras. */
-  var SUPABASE_URL = "";
-  var SUPABASE_ANON_KEY = "";
+  var SUPABASE_URL = "https://jctnzmzovfwwxbkcqikk.supabase.co/rest/v1/";
+  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpjdG56bXpvdmZ3d3hia2NxaWtrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3NjQ2MjAsImV4cCI6MjEwMjM0MDYyMH0.MmXV3Ti8yAc0FnultsMfwBdqzkBn1RDCNU4eUoJVc-Q";
 
   /* ---------- Enlaces de pago de los tickets ----------
      Crea DOS enlaces de pago en MercadoPago, Flow, Khipu o Klip:
