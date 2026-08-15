@@ -7,6 +7,9 @@
    1. Pide el pago a la API de MercadoPago (para verificar que es real).
    2. Si el pago está APROBADO, recién ahí inserta los folios en "compras"
       (una fila por ticket) y marca la orden como "pagado".
+   3. Si un pago ya confirmado se REVIERTE (reembolso, cargo no deseado o
+      rechazo posterior), elimina los tickets de "compras" para que NO
+      cuenten en el sorteo y marca la orden como "rechazado".
 
    En MercadoPago: Tus integraciones → Webhooks → URL: https://<tu-sitio>/api/webhook
    ========================================================================== */
@@ -55,7 +58,8 @@ async function confirmarPago(paymentId) {
 
   var estado = "pendiente";
   if (pago.status === "approved") estado = "pagado";
-  else if (pago.status === "rejected" || pago.status === "cancelled") estado = "rechazado";
+  else if (pago.status === "rejected" || pago.status === "cancelled"
+        || pago.status === "refunded" || pago.status === "charged_back") estado = "rechazado";
 
   if (ordenRow.estado === estado) return;
 
@@ -82,6 +86,16 @@ async function confirmarPago(paymentId) {
       method: "POST",
       headers: sbHeaders(),
       body: JSON.stringify(filas)
+    }).catch(function () {});
+  }
+
+  /* Reversión: el pago ya confirmado se revirtió (reembolso/cargo no
+     deseado). Se eliminan los tickets para que NO cuenten en el sorteo. */
+  if (estado === "rechazado" && ordenRow.estado === "pagado") {
+    console.log("[webhook] Reversión de pago, se anulan los tickets de la orden", ref);
+    await fetch(process.env.SUPABASE_URL + "/rest/v1/compras?orden=eq." + encodeURIComponent(ref), {
+      method: "DELETE",
+      headers: sbHeaders()
     }).catch(function () {});
   }
 
