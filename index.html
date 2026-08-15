@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModularBox | Quinchos, oficinas y containers a tu medida</title>
+  <meta name="description" content="Fabricamos quinchos, oficinas, bodegas y containers adaptados en nuestra propia planta. Despacho e instalación en todo Chile. Escríbenos por WhatsApp y te pasamos el precio directo." />
+  <meta name="theme-color" content="#17201F" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo">
+        <svg class="logo-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 10.5 12 3l9 7.5" />
+          <path d="M5 9.5V21h14V9.5" />
+          <path d="M10 21v-6h4v6" />
+          <rect x="15" y="6.5" width="3" height="2.5" />
+        </svg>
+        <span>Modular<strong>Box</strong></span>
+      </a>
+
+      <nav class="site-nav" id="siteNav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="btn btn-primary nav-cta">Cotizar</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== BURBUJA FLOTANTE DEL SORTEO ===== -->
+  <div class="promo-bubble-anim">
+    <button type="button" class="promo-bubble promo-open" aria-label="Abrir el sorteo">
+      <span class="promo-bubble-halo"></span>
+      <span class="promo-bubble-tag">¡SORTEO!</span>
+      <svg class="promo-bubble-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="8" width="18" height="4" rx="1" />
+        <path d="M12 8v13" />
+        <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+        <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5" />
+      </svg>
+      <span class="promo-bubble-spark s1">✦</span>
+      <span class="promo-bubble-spark s2">✦</span>
+    </button>
+  </div>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <h1>Espacio que se adapta a tu forma de vivir</h1>
+        <p class="hero-sub">Módulos habitacionales diseñados para instalarse rápidamente, con diseño, funcionalidad y calidad constructiva.</p>
+
+        <div class="hero-actions">
+          <a href="#contacto" class="btn btn-primary btn-lg">Cotizar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROMOCIÓN (popup) ===== -->
+    <div class="promo-modal" id="promoModal" aria-hidden="true">
+      <div class="promo-modal-backdrop" data-promo-close></div>
+      <div class="promo-modal-box" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+        <button type="button" class="promo-modal-close" id="promoClose" aria-label="Cerrar promoción">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+
+        <section class="promo">
+          <div class="container">
+            <div class="promo-head">
+              <span class="promo-flag">GRAN SORTEO</span>
+              <h2 id="promoTitle">Te estamos sorteando una casa modular. Sí, en serio.</h2>
+              <p class="promo-text">Compra tu ticket y participa. Simple como eso.</p>
+            </div>
+
+            <div class="prize-grid">
+              <article class="prize-card">
+                <div class="prize-img" data-label="[Imagen referencial]"></div>
+                <div class="prize-body">
+                  <span class="prize-place">1er Lugar</span>
+                  <h3>Una casa modular completa</h3>
+                  <a href="participar.html" class="btn btn-primary btn-block">Quiero participar</a>
+                </div>
+              </article>
+
+              <article class="prize-card">
+                <div class="prize-img" data-label="[Imagen referencial]"></div>
+                <div class="prize-body">
+                  <span class="prize-place">2do Lugar</span>
+                  <h3>Una moto 0 km</h3>
+                  <a href="participar.html" class="btn btn-primary btn-block">Quiero participar</a>
+                </div>
+              </article>
+
+              <article class="prize-card">
+                <div class="prize-img" data-label="[Imagen referencial]"></div>
+                <div class="prize-body">
+                  <span class="prize-place">3er Lugar</span>
+                  <h3>$100.000 en efectivo</h3>
+                  <a href="participar.html" class="btn btn-primary btn-block">Quiero participar</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="promo-cta">
+              <p class="promo-note">Cada ticket comprado es una participación. Mientras más compres, más chances tienes.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ===== SOLUCIONES ===== -->
+    <section class="section modelos" id="soluciones">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Lo que hacemos</span>
+          <h2>Quinchos, oficinas y bodegas</h2>
+          <p>Casi todo se vende por planos y después te las arreglas tú. Nosotros fabricamos el módulo, lo llevamos y lo dejamos funcionando en tu terreno.</p>
+        </div>
+
+        <div class="alt-cards">
+          <!-- Solución 1 -->
+          <article class="alt-card">
+            <div class="alt-card-media ph-img" data-label="Quincho modular"></div>
+            <div class="alt-card-body">
+              <h3>Quincho modular</h3>
+              <p class="alt-card-desc">En 10 o 20 pies. El clásico quincho para juntas, cumpleaños y no dejar entrar el frío.</p>
+              <div class="card-labels">
+                <span class="pill">10 pies</span>
+                <span class="pill">20 pies</span>
+                <span class="pill">2,56 × 4,3 × 3 m</span>
+              </div>
+              <a href="#contacto" class="btn btn-primary">Cotizar este modelo</a>
+            </div>
+          </article>
+
+          <!-- Solución 2 -->
+          <article class="alt-card alt-card-flip">
+            <div class="alt-card-media ph-img" data-label="Oficina modular"></div>
+            <div class="alt-card-body">
+              <h3>Oficina modular</h3>
+              <p class="alt-card-desc">Un espacio tranquilo para trabajar, con buena luz y aislación. La dejamos lista para entrar.</p>
+              <div class="card-labels">
+                <span class="pill">10 pies</span>
+                <span class="pill">2,56 × 2,43 × 3 m</span>
+              </div>
+              <a href="#contacto" class="btn btn-primary">Cotizar este modelo</a>
+            </div>
+          </article>
+
+          <!-- Solución 3 -->
+          <article class="alt-card">
+            <div class="alt-card-media ph-img" data-label="Oficina modular con baño"></div>
+            <div class="alt-card-body">
+              <h3>Oficina modular con baño</h3>
+              <p class="alt-card-desc">Oficina con baño incluido. Para los que necesitan un espacio completo y no andar compartiendo.</p>
+              <div class="card-labels">
+                <span class="pill">Con baño</span>
+                <span class="pill">2,56 × 2,43 × 6 m</span>
+              </div>
+              <a href="#contacto" class="btn btn-primary">Cotizar este modelo</a>
+            </div>
+          </article>
+
+          <!-- Solución 4 -->
+          <article class="alt-card alt-card-flip">
+            <div class="alt-card-media ph-img" data-label="Bodega modular"></div>
+            <div class="alt-card-body">
+              <h3>Bodega modular</h3>
+              <p class="alt-card-desc">Para guardar herramientas, productos o lo que tengas que cuidar. Segura, seca y con llave.</p>
+              <div class="card-labels">
+                <span class="pill">Con llave</span>
+                <span class="pill">2,56 × 2,43 × 6 m</span>
+              </div>
+              <a href="#contacto" class="btn btn-primary">Cotizar este modelo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+    <section class="section servicios" id="servicios">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="section-kicker">Cómo trabajamos</span>
+            <h2>Lo hacemos todo nosotros, de punta a punta</h2>
+          </div>
+          <p>Nada de tercerizar y desaparecer. Proyectamos, fabricamos, transportamos y armamos en el lugar.</p>
+        </div>
+
+        <div class="grid-services">
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <h3>Diseño según tu espacio</h3>
+            <p>Vemos tu espacio, escuchamos lo que necesitas y proyectamos el módulo con un precio real.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Fabricación en nuestra planta</h3>
+            <p>Cortamos, soldamos y armamos nosotros mismos, revisando cada etapa antes de despachar.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg>
+            </div>
+            <h3>Adaptación de containers</h3>
+            <p>Convertimos un container estándar en oficina, quincho o baño, con aislación y buenos acabados.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Instalación en el lugar</h3>
+            <p>Llegamos, armamos y conectamos. Tú no tienes que mover un dedo ni coordinar nada.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M2 7h20"/></svg>
+            </div>
+            <h3>Transporte a todo Chile</h3>
+            <p>Coordinamos despacho y grúa. Nos encargamos de que llegue bien y en la fecha acordada.</p>
+          </article>
+
+          <article class="service">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Asesoría y mantención</h3>
+            <p>Te ayudamos con permisos y mantención. Y si algo se desajusta después, respondemos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRABAJOS REALIZADOS ===== -->
+    <section class="section trabajos" id="trabajos">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Nuestro trabajo</span>
+          <h2>Trabajos realizados</h2>
+        </div>
+      </div>
+
+      <!-- Para poner fotos reales: agrega tus imágenes en img/trabajos/ con esos nombres (trabajo-1.jpg, trabajo-2.jpg, etc.).
+           Mientras no existan, las tarjetas se verán en verde. -->
+      <div class="trabajos-track">
+        <div class="trabajos-group">
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-1.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-2.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-3.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-4.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-5.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-6.jpg');"></div>
+        </div>
+        <div class="trabajos-group" aria-hidden="true">
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-1.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-2.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-3.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-4.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-5.jpg');"></div>
+          <div class="trabajo-slide" style="--img: url('../img/trabajos/trabajo-6.jpg');"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IMAGEN A TODO LO ANCHO ===== -->
+    <section class="img-break" aria-label="Trabajo ModularBox en terreno"></section>
+
+    <!-- ===== CONTACTO / COTIZACIÓN ===== -->
+    <section class="section contacto" id="contacto">
+      <div class="container contacto-grid">
+        <div class="contacto-card">
+          <span class="section-kicker kicker-light">Contacto</span>
+          <h2>¿Tienes un proyecto en mente?</h2>
+          <p class="contacto-text">Cuéntanos qué necesitas y dónde estás. Te respondemos con un precio claro y sin vueltas.</p>
+
+          <ul class="contacto-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div><strong>WhatsApp</strong><span>+56 9 8884 0060</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+              <div><strong>Instagram</strong><span>@ModularBoxch</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+              <div><strong>Correo</strong><span>ventas@modularbox.cl</span></div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><strong>Ubicación</strong><span>Atención en todo Chile</span></div>
+            </li>
+          </ul>
+
+          <div class="contacto-actions">
+            <a href="https://wa.me/56988840060" target="_blank" rel="noopener" class="btn btn-white">
+              Escríbenos por WhatsApp
+            </a>
+            <a href="https://www.instagram.com/ModularBoxch" target="_blank" rel="noopener" class="btn btn-white-outline">
+              Ver Instagram
+            </a>
+          </div>
+        </div>
+
+        <form class="contacto-form" id="quoteForm" novalidate>
+          <h3>Cuéntanos qué necesitas</h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fNombre">Nombre</label>
+              <input type="text" id="fNombre" name="nombre" required placeholder="Tu nombre" />
+            </div>
+            <div class="form-field">
+              <label for="fApellido">Apellido</label>
+              <input type="text" id="fApellido" name="apellido" placeholder="Tu apellido" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fCorreo">Correo</label>
+              <input type="email" id="fCorreo" name="correo" required placeholder="tucorreo@ejemplo.cl" />
+            </div>
+            <div class="form-field">
+              <label for="fTelefono">Teléfono</label>
+              <input type="tel" id="fTelefono" name="telefono" placeholder="+56 9 ..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fTipo">¿Qué necesitas?</label>
+              <select id="fTipo" name="tipo">
+                <option value="">Selecciona una opción</option>
+                <option>Quincho modular</option>
+                <option>Oficina modular</option>
+                <option>Oficina modular con baño</option>
+                <option>Bodega modular</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="fMetros">Metraje aproximado (m²)</label>
+              <input type="number" id="fMetros" name="metros" min="5" max="1000" placeholder="Ej: 15" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="fMensaje">Cuéntanos: qué necesitas, dónde y para cuándo</label>
+            <textarea id="fMensaje" name="mensaje" rows="4" placeholder="Ej: Un quincho de 10 pies para mi casa en Concepción, lo necesito antes de enero."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar y recibir respuesta</button>
+          <p class="form-note" id="formStatus" role="status" hidden></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== BOLETA DE PARTICIPACIÓN ===== -->
+  <div class="boleta-overlay" id="boletaOverlay" hidden>
+    <div class="boleta" id="boletaPrint">
+      <div class="boleta-head">
+        <span class="boleta-logo">Modular<strong>Box</strong></span>
+        <span class="boleta-tipo">Boleta de participación</span>
+      </div>
+      <p class="boleta-sorteo">Gran Sorteo · Casa modular + moto 0 km + $100.000</p>
+      <div class="boleta-folio">Folio: <strong id="bFolio">—</strong></div>
+      <table class="boleta-tabla">
+        <tbody>
+          <tr><th>Fecha</th><td id="bFecha"></td></tr>
+          <tr><th>Comprador</th><td id="bNombre"></td></tr>
+          <tr><th>Correo</th><td id="bCorreo"></td></tr>
+          <tr><th>Teléfono</th><td id="bTelefono"></td></tr>
+          <tr><th>Detalle</th><td id="bDetalle"></td></tr>
+          <tr><th>Total</th><td id="bTotal" class="b-total"></td></tr>
+          <tr><th>Ref. de pago</th><td id="bReferencia"></td></tr>
+        </tbody>
+      </table>
+      <p class="boleta-nota">Guarda esta boleta. El folio es tu comprobante para participar en el sorteo. Solo es válida si el pago aparece confirmado.</p>
+    </div>
+    <div class="boleta-actions">
+      <button type="button" class="btn btn-primary" id="printBoleta">Imprimir / guardar PDF</button>
+      <button type="button" class="btn btn-outline" id="closeBoleta">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <svg class="logo-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5" />
+            <path d="M5 9.5V21h14V9.5" />
+            <path d="M10 21v-6h4v6" />
+            <rect x="15" y="6.5" width="3" height="2.5" />
+          </svg>
+          <span>Modular<strong>Box</strong></span>
+        </a>
+        <p>Quinchos, oficinas y bodegas modulares. Fabricamos aquí mismo y despachamos a todo Chile.</p>
+      </div>
+      <nav class="footer-links" aria-label="Enlaces del sitio">
+        <div class="footer-col">
+          <h4>Sitio</h4>
+          <a href="#inicio">Inicio</a>
+          <a href="#" class="promo-open">Sorteo</a>
+          <a href="#soluciones">Soluciones</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#trabajos">Trabajos</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Soluciones</h4>
+          <a href="#soluciones">Quincho modular</a>
+          <a href="#soluciones">Oficina modular</a>
+          <a href="#soluciones">Oficina con baño</a>
+          <a href="#soluciones">Bodega modular</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/56988840060" target="_blank" rel="noopener">WhatsApp: +56 9 8884 0060</a>
+          <a href="https://www.instagram.com/ModularBoxch" target="_blank" rel="noopener">Instagram: @ModularBoxch</a>
+          <a href="mailto:ventas@modularbox.cl">ventas@modularbox.cl</a>
+          <span>Atención en todo Chile</span>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 ModularBox. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
