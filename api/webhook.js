@@ -59,17 +59,23 @@ async function confirmarPago(paymentId) {
 
   if (ordenRow.estado === estado) return;
 
-  /* Pago aprobado: insertar una fila por folio en "compras". */
+  /* Pago aprobado: insertar una fila por folio en "compras".
+     Cada fila es UN ticket: descripción "1 ticket" y el total repartido
+     proporcionalmente (para que la suma de la orden cuadre). */
   if (estado === "pagado") {
-    var filas = (ordenRow.folios || []).map(function (folio) {
+    var folios = ordenRow.folios || [];
+    var n = folios.length || 1;
+    var base = Math.floor(ordenRow.total / n);
+    var resto = ordenRow.total - base * n;
+    var filas = folios.map(function (folio, i) {
       return {
         orden: ref,
         folio: folio,
         nombre: ordenRow.nombre,
         correo: ordenRow.correo,
         telefono: ordenRow.telefono,
-        tickets: ordenRow.tickets,
-        total: ordenRow.total
+        tickets: "1 ticket",
+        total: i === n - 1 ? base + resto : base
       };
     });
     await fetch(process.env.SUPABASE_URL + "/rest/v1/compras", {
