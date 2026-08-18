@@ -19,12 +19,7 @@
    ========================================================================== */
 
 var EMAIL_DESTINO = "gustavo.soto.cardenas1994@gmail.com";
-
-/*
- * IMPORTANTE: Reemplaza este ID con el de tu Google Sheet.
- * Lo sacas de la URL: https://docs.google.com/spreadsheets/d/ESTE_ID_ESCRI/index.html
- */
-var SPREADSHEET_ID = "";
+var SPREADSHEET_ID = "1Cigms_LxyBx4EPp8848btzmr3QL_sFCVFvZONLiPu8k";
 
 function doPost(e) {
   var datos = {};
