@@ -184,19 +184,6 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url("../img/hero-bg.png") no-repeat center center / cover;
-  background-position: 55% center;
-}
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(27, 48, 73, .82) 0%, rgba(27, 48, 73, .55) 38%, rgba(27, 48, 73, .15) 72%, rgba(27, 48, 73, .38) 100%);
-}
-
 .hero-grid {
   position: relative;
   z-index: 1;
@@ -1120,10 +1107,6 @@ body.modal-open { overflow: hidden; }
     justify-content: flex-start;
     gap: 40px;
     padding: 120px 0 70px;
-  }
-  .hero-bg {
-    background-size: auto 110%;
-    background-position: center center;
   }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-image { order: -1; }
