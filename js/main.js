@@ -1,3 +1,46 @@
+  /* ---------- Popup Promoción / Sorteo ---------- */
+  var promoModal = document.getElementById("promoModal");
+  var promoClose = document.getElementById("promoClose");
+
+  function openPromo() {
+    if (!promoModal) return;
+    promoModal.removeAttribute("hidden");
+    promoModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  }
+
+  function closePromo() {
+    if (!promoModal) return;
+    promoModal.setAttribute("hidden", "");
+    promoModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  if (promoClose) {
+    promoClose.addEventListener("click", closePromo);
+  }
+
+  if (promoModal) {
+    var backdrop = promoModal.querySelector("[data-promo-close]");
+    if (backdrop) {
+      backdrop.addEventListener("click", closePromo);
+    }
+  }
+
+  var promoOpenBtns = document.querySelectorAll(".promo-open");
+  promoOpenBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      openPromo();
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && promoModal && !promoModal.hasAttribute("hidden")) {
+      closePromo();
+    }
+  });
+
   /* ---------- Formulario de cotización ----------
      El envío pasa por /api/cotizacion (función serverless de Vercel), que
      reenvía los datos al Google Apps Script (ver google-apps-script.gs) y
