@@ -76,7 +76,7 @@
   /* ---------- Formulario de cotización ----------
      COTIZACION_URL: URL del Google Apps Script (ver google-apps-script.gs).
      Déjala vacía si aún no configuras la planilla. */
-  var COTIZACION_URL = "https://script.google.com/macros/s/AKfycbzByH1gK-6rM4LbgRaD6EPDnDVKGuCF2FrxAVyDXZUsdic5j-2858SWVByztg2GJejH/exec";
+  var COTIZACION_URL = "https://script.google.com/macros/s/AKfycbxNT6an1yywRmwBMEmrEKGBnO5JHH7Wk5uwrDSbKU1CbGEpDMxSCqzACubHJNEP7n99/exec";
 
   var form = document.getElementById("quoteForm");
   var status = document.getElementById("formStatus");
