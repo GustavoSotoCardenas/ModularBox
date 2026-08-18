@@ -20,6 +20,12 @@
 
 var EMAIL_DESTINO = "gustavo.soto.cardenas1994@gmail.com";
 
+/*
+ * IMPORTANTE: Reemplaza este ID con el de tu Google Sheet.
+ * Lo sacas de la URL: https://docs.google.com/spreadsheets/d/ESTE_ID_ESCRI/index.html
+ */
+var SPREADSHEET_ID = "";
+
 function doPost(e) {
   var datos = {};
   try {
@@ -147,8 +153,15 @@ function procesarCompra_(datos) {
 }
 
 /* ---------- Hojas ---------- */
+function getSpreadsheet_() {
+  if (!SPREADSHEET_ID) {
+    throw new Error("Falta configurar SPREADSHEET_ID en el script");
+  }
+  return SpreadsheetApp.openById(SPREADSHEET_ID);
+}
+
 function getCotizacionesSheet_() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = getSpreadsheet_();
   var sheet = ss.getSheetByName("Cotizaciones");
   if (!sheet) {
     sheet = ss.insertSheet("Cotizaciones");
@@ -160,7 +173,7 @@ function getCotizacionesSheet_() {
 }
 
 function getComprasSheet_() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = getSpreadsheet_();
   var sheet = ss.getSheetByName("Compras");
   if (!sheet) {
     sheet = ss.insertSheet("Compras");
@@ -197,7 +210,7 @@ function probarFormulario() {
 
 function diagnosticarSheet() {
   try {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var ss = getSpreadsheet_();
     Logger.log("Spreadsheet ID: " + ss.getId());
     Logger.log("Spreadsheet nombre: " + ss.getName());
     
